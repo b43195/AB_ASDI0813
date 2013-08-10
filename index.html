@@ -21,7 +21,166 @@
 
 </head>
 <body>
-	<!-- Scripts -->
+
+<!--Home Page-->
+	<div data-role="page" id="homePage">
+		<div data-role="content">
+			<h1>Start a New Project</h1>
+			<p>Create a new project to keep track of related tasks, collaborators and important dates</p>
+			<input type="button" id="newProjBtn" value="New Project" data-theme="b"/>
+			<input type="button" id="newTaskBtn" value="New Task" data-theme="a"/>
+		</div>
+
+		<div data-role="footer" data-position="fixed" data-id="homePage">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#projPage" data-icon="search" data-iconpos="bottom">Projects</a></li>
+					<li><a href="#optionsPage "data-icon="info" data-iconpos="bottom">Options</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+<!--new Proj Page-->
+	<div data-role="page" id="newProjPage">
+		<div data-role="header" data-position="fixed">
+			<a href="index.html" data-icon="delete">Cancel</a>
+			<h1>New Project</h1>
+		</div>
+<!--use to wrap form?--><div data-role="content">
+		</div>	
+
+		<form action="" method="post" id="addProjForm">
+			<div data-role="fieldcontain">
+				<label for"projName">Project Name</label>
+				<input type="text" name="projName" id="projName" placeholder="My Project" class="required"/>
+			</div>
+			<div data-role="fieldcontain">
+				<label for="description">Description </label>
+				<textarea name="desc" id="desc" placeholder="Building a rocket ship to the moon, so long earth!"></textarea>
+			</div>				
+			<div data-role="fieldcontain">
+				<label for="cat">Category</label>
+				<select name="cat" id="cat" class="required">
+					<option data-placeholder="true">Select Category</option>
+					<option value="personal">Personal</option>
+					<option value="work">Work</option>
+					<option value="school">School</option>
+				</select>
+			</div>
+			<div data-role="fieldcontain">
+				<label for="projDue">Desired Completion Date</label>
+				<input type="date" id="projDue" value="" class="required"/>
+			</div>
+		</form>
+		<div data-role="footer" data-position="fixed" data-id="homePage">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#projPage" data-icon="search" data-iconpos="bottom">Projects</a></li>
+					<li><a href="#optionsPage "data-icon="info" data-iconpos="bottom">Options</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+<!--New Task-->
+	<div data-role="page" id="newTask">
+		<div data-role="header" data-position="fixed">
+			<a href="index.html" data-icon="delete">Cancel</a>
+			<h1>New Task</h1>
+		</div>
+		<div data-role="content">
+			<h1>Add Tasks</h1>
+			<form action="" method="post" id="addTasks">
+				<div data-role="fieldcontain">
+					<label for"taskName">Task Name</label>
+					<input type="text" name="taskName" id="taskName" placeholder="Task Name" class="required"/>
+				</div>				
+				<div data-role="fieldcontain">
+					<label for="taskDue">Desired Completion Date</label>
+					<input type="date" id="taskDue" value="" class="required"/>
+				</div>
+				<div data-role="fieldcontain">
+					<label for"alert">Alert</label>
+					<select data-role="slider" name="alert" id="alert">
+						<option value="off">Off</option>
+						<option value="on">On</option>
+					</select>
+				</div>
+			</form>			
+		</div>
+	</div>	
+
+<!--Proj Page-->
+	<div data-role="page" id="projPage">
+		<div data-role="header" data-position="fixed">
+			<a href="index.html" data-icon="home">Home</a>
+			<h1>Projects</h1>
+		</div>
+		<div data-role="content">
+			<ul data-role="listview" id="projList">
+			</ul>
+		</div>
+		<div data-role="footer" data-position="fixed" data-id="projPage">
+			<div data-role="navbar">
+				<ul>
+					<li id="activeProj"><a href="#">Active</a></li>
+					<li id="completedProj"><a href="#">Completed</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+<!--Spec Proj Page-->
+	<div data-role="page" id="specProjPage">
+		<div data-role="content">
+			<ul data-role="listview" id="projList">
+			</ul>
+<!--Need Share Edit and Delete Buttons-->			
+		</div>
+		<div data-role="footer" data-position="fixed" data-id="projPage">
+			<div data-role="navbar">
+				<ul>
+					<li id="activeProj"><a href="#">Active</a></li>
+					<li id="completedProj"><a href="#">Completed</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+<!--Options Page-->
+	<div data-role="page" id="optionsPage">
+		<div data-role="header" data-position="fixed">
+			<a href="index.html" data-icon="home">Home</a>
+			<h1>Options</h1>
+		</div>
+		<div data-role="content">
+			<h1>Options</h1>
+			<div data-role="fieldcontain">
+				<label for"allAlert">Mute All Alerts</label>
+				<select data-role="slider" name="alert" id="alert">
+					<option value="off">Off</option>
+					<option value="on">On</option>
+				</select>
+			</div>
+		<div data-role="footer" data-position="fixed" data-id="homePage">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#newProjPage">New</a></li>
+					<li><a href="#projPage" data-icon="search" data-iconpos="bottom">Projects</a></li>
+				</ul>
+			</div>
+		</div>
+<!--Is this right?--><input type="button" value="Clear Entries">
+					 <input type="submit" value="Save" data-theme="b">
+		</div>
+	</div>
+
+
+
+
+
+<!-- Scripts -->
 			<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 			<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
 			<script type="text/javascript" src="main.js"></script>
