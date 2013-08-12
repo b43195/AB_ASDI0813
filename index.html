@@ -6,16 +6,16 @@
 <head>
 
 	<meta charset="utf-8">
-	<meta name="description" content=""/>
+	<meta name="description" content="Project Management Web Application"/>
 	
-	<title>Title Here</title>
+	<title>Project Manager</title>
 
 	<!-- Mobile IE needs ClearType for smoothing fonts -->
 	<meta http-equiv="cleartype" content="on">
 	
 	<!-- StyleSheets under here -->
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
-	
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+	<link rel="stylesheet" href="main.css" />
 	<!-- JavaScript is normally at the end of the body, except for Modernizr which enables HTML5 elements & feature detects -->
 	<script src="libs/modernizr.custom.min.js"></script>
 
@@ -23,12 +23,14 @@
 <body>
 
 <!--Home Page-->
-	<div data-role="page" id="homePage">
+	<div data-role="page" id="homePage" data-theme="a">
+		<div data-role="header" data-position="fixed">
+			<h1>Project Manager</h1>
+		</div>
 		<div data-role="content">
-			<h1>Start a New Project</h1>
 			<p>Create a new project to keep track of related tasks, collaborators and important dates</p>
-			<input type="button" id="newProjBtn" value="New Project" data-theme="b"/>
-			<input type="button" id="newTaskBtn" value="New Task" data-theme="a"/>
+			<input type="button" id="newProjBtn" value="New Project" data-theme="a"/>
+			<input type="button" id="newTaskBtn" value="New Task" data-theme="b"/>
 		</div>
 
 		<div data-role="footer" data-position="fixed" data-id="homePage">
@@ -42,7 +44,7 @@
 	</div>
 
 <!--new Proj Page-->
-	<div data-role="page" id="newProjPage">
+	<div data-role="page" id="newProjPage" data-theme="a">
 		<div data-role="header" data-position="fixed">
 			<a href="index.html" data-icon="delete">Cancel</a>
 			<h1>New Project</h1>
@@ -53,11 +55,11 @@
 		<form action="" method="post" id="addProjForm">
 			<div data-role="fieldcontain">
 				<label for"projName">Project Name</label>
-				<input type="text" name="projName" id="projName" placeholder="My Project" class="required"/>
+				<input data-theme="b" type="text" name="projName" id="projName" placeholder="My Project" class="required"/>
 			</div>
 			<div data-role="fieldcontain">
 				<label for="description">Description </label>
-				<textarea name="desc" id="desc" placeholder="Building a rocket ship to the moon, so long earth!"></textarea>
+				<textarea data-theme="b" name="desc" id="desc" placeholder="Building a rocket ship to the moon, so long earth!"></textarea>
 			</div>				
 			<div data-role="fieldcontain">
 				<label for="cat">Category</label>
@@ -70,7 +72,7 @@
 			</div>
 			<div data-role="fieldcontain">
 				<label for="projDue">Desired Completion Date</label>
-				<input type="date" id="projDue" value="" class="required"/>
+				<input data-theme="b" type="date" id="projDue" value="" class="required"/>
 			</div>
 		</form>
 		<div data-role="footer" data-position="fixed" data-id="homePage">
@@ -84,7 +86,7 @@
 	</div>
 
 <!--New Task-->
-	<div data-role="page" id="newTask">
+	<div data-role="page" id="newTask" data-theme="a">
 		<div data-role="header" data-position="fixed">
 			<a href="index.html" data-icon="delete">Cancel</a>
 			<h1>New Task</h1>
@@ -112,7 +114,7 @@
 	</div>	
 
 <!--Proj Page-->
-	<div data-role="page" id="projPage">
+	<div data-role="page" id="projPage" data-theme="a">
 		<div data-role="header" data-position="fixed">
 			<a href="index.html" data-icon="home">Home</a>
 			<h1>Projects</h1>
@@ -124,15 +126,15 @@
 		<div data-role="footer" data-position="fixed" data-id="projPage">
 			<div data-role="navbar">
 				<ul>
-					<li id="activeProj"><a href="#">Active</a></li>
-					<li id="completedProj"><a href="#">Completed</a></li>
+					<li id="activeProj"><a href="#" data-icon="star" data-iconpos="bottom">Active</a></li>
+					<li id="completedProj" data-icon="check"><a href="#" data-icon="check" data-iconpos="bottom">Completed</a></li>
 				</ul>
 			</div>
 		</div>
 	</div>
 
 <!--Spec Proj Page-->
-	<div data-role="page" id="specProjPage">
+	<div data-role="page" id="specProjPage" data-theme="a">
 		<div data-role="content">
 			<ul data-role="listview" id="projList">
 			</ul>
@@ -149,30 +151,30 @@
 	</div>
 
 <!--Options Page-->
-	<div data-role="page" id="optionsPage">
+	<div data-role="page" id="optionsPage" data-theme="a">
 		<div data-role="header" data-position="fixed">
 			<a href="index.html" data-icon="home">Home</a>
 			<h1>Options</h1>
 		</div>
 		<div data-role="content">
-			<h1>Options</h1>
 			<div data-role="fieldcontain">
 				<label for"allAlert">Mute All Alerts</label>
 				<select data-role="slider" name="alert" id="alert">
 					<option value="off">Off</option>
 					<option value="on">On</option>
 				</select>
+				<p>muting all alerts will bypass any options you have selected in your projects or your tasks</p>
 			</div>
 		<div data-role="footer" data-position="fixed" data-id="homePage">
 			<div data-role="navbar">
 				<ul>
-					<li><a href="#newProjPage">New</a></li>
+					<li><a href="#newProjPage" data-icon="plus" data-iconpos="bottom">New</a></li>
 					<li><a href="#projPage" data-icon="search" data-iconpos="bottom">Projects</a></li>
 				</ul>
 			</div>
 		</div>
-<!--Is this right?--><input type="button" value="Clear Entries">
-					 <input type="submit" value="Save" data-theme="b">
+<!--Is this right?--><input type="button" value="Clear Entries" data-theme="b">
+					 <input type="submit" value="Save" data-theme="a">
 		</div>
 	</div>
 
